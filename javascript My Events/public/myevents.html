@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html" />
+	<meta name="author" content="Abdul Rehman" />
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+	<title>Event Planner-My Events</title>
+    <script src="js/jquery-1.12.4.js"></script>
+     <script>
+                if(!sessionStorage['Eventp_userInfo'])
+                {
+                    location.href="index.html";
+                }
+     </script>
+     <script type="text/javascript">
+    window.onload = function () {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://api.ipify.org?format=jsonp&callback=DisplayIP";
+        document.getElementsByTagName("head")[0].appendChild(script);
+    };
+    
+    </script>
+</head>
+<body>
+<div class="container-fluid">
+<div class="row">
+       <nav class="navbar navbar-default" style="margin-bottom: 0px;">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="home.html">Event Planner</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li ><a href="home.html">Home</a></li>
+              <li><a href="all-events.html">All Events</a></li>
+              <li class="active"><a href="myevents.html">My Events</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="active" ><a href="#" id="user-pannel">Default <span class="sr-only" >(current)</span></a></li>
+              <li><a href="javaScript:void(0)" id="ipcount"></a></li>
+              <li><a href="javaScript:void(0)" style="color:red;" onclick="fnlogout()">Logout</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+      </div>
+    <!--End Nav--->
+    <!-- Message Area -->
+          <div id="modal-message"  class="modal-temp">
+            <span class="close close-btn">&times;</span>
+            <div id="msg"></div>
+          </div>
+    <!-------->
+    <div class="row title-page">
+        <div class="col-md-12">
+					<h1>My Events</h1>
+		</div>
+        <div>
+             <p class="info-para">Here you can view all going events</p>
+        </div>
+    </div>
+    <div class="row event-disp">
+      <div class="e-content">
+     	<div id="div-eventDetail"><span></span></div>
+      </div>
+    </div>
+</div>
+ <div id="js-heightControl" style="height: 0;">&nbsp;</div>
+        <script>
+            $(function(){
+                $('#js-heightControl').css('height', $(window).height() - $('html').height() +'px');
+            });
+        </script>
+ <footer>
+  <p>Designed By Abdul Rehman</p>
+</footer>
+<input type="hidden" id="pagedetector" value="myevents"/>
+<script src="js/Popper.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+<script src="js/myevents.js"></script>
+<script>
+    document.getElementById("user-pannel").innerHTML="Signedin as <span style='color:#68D218;'>"+JSON.parse(sessionStorage.getItem('Eventp_userInfo')).displayName+"</span>";
+    function DisplayIP(response) {
+        //document.getElementById("ipaddress").innerHTML = "Your IP Address is " + response.ip;
+        fnUserCounter(response.ip);
+    }
+</script>
+
+</body>
+</html>

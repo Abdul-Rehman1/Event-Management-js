@@ -1,0 +1,312 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html" />
+		<meta name="author" content="Abdul Rehman" />
+		<link href="css/bootstrap.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<link href="css/model-box.css" rel="stylesheet">
+		<link href="css/plugins/jquery-ui.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        
+		<title>
+			Event Planner-Create Events
+		</title>
+        <script src="js/jquery-1.12.4.js"></script>
+        <script>
+                if(!sessionStorage['Eventp_userInfo'])
+                {
+                    location.href="index.html";
+                }
+        </script>
+        <script type="text/javascript">
+    window.onload = function () {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://api.ipify.org?format=jsonp&callback=DisplayIP";
+        document.getElementsByTagName("head")[0].appendChild(script);
+    };
+    
+    </script>
+	</head>
+	<body >
+    
+		<div class="container-fluid">
+        <!--nav bar-->
+    <div class="row">
+       <nav class="navbar navbar-default" style="margin-bottom: 0px;">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="home.html">Event Planner</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="home.html">Home</a></li>
+              <li><a href="all-events.html">All Events</a></li>
+              <li><a href="myevents.html">My Events</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="active" ><a href="#" id="user-pannel">Default <span class="sr-only" >(current)</span></a></li>
+              <li><a href="javaScript:void(0)" id="ipcount"></a></li>
+              <li><a href="javaScript:void(0)" style="color:red;" onclick="fnlogout();">Logout</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+      </div>
+    <!--End Nav--->
+         <!-- Message Area -->
+          <div id="modal-message"  class="modal-temp">
+            <span class="close close-btn">&times;</span>
+            <div id="msg"></div>
+          </div>
+          <!-------->
+			<div class="row title-page">
+				<div class="col-md-12">
+					<h1>
+						Create Event
+					</h1>
+				</div>
+                <div>
+                    <p class="info-para">Here you can add new Events</p>
+                </div>
+				<div class="btn-head">
+					<input type="button" onclick="modalboxShow()" value="Create Event" class="btn btn-success " style="color:black; font-weight:bold; background-color: #68D218;"/>
+				</div>
+				<!-- Trigger/Open The Modal==========================================-->
+				<!-- The Modal -->
+				<div id="myModal" class="modal">
+					<!-- Modal content -->
+                    
+					<div id="modal-content" style="width: 50%;" class="modal-content">
+						<span class="close">
+							&times;
+						</span>
+						<div id="message">
+							<div class="container" style="width: 100%; color: #777373;">
+								<h1 style="text-align: center;color: red;border-bottom: 3px double;">
+									Create An Event
+								</h1>
+								<form onsubmit="fnCreateEvent();" id="modal-form" action="javaScript:void(0)">
+									<div class="row">
+										<div class="col-md-1">
+										</div>
+										<div class="col-md-5">
+											<label for="">
+												Event Name
+												<input id="evnName" type="text" class="form-control" required="required">
+											</label>
+										</div>
+										<div class=" col-md-5">
+											<label for="">
+												Date
+												<input type="text" class="form-control" placeholder="pick date" id="e-datepicker" required="required">
+											</label>
+										</div>
+									</div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-1">
+										</div>
+                                        <div class=" col-md-4">
+											<label for="evnDefTime">
+												<input type="checkbox" checked="checked" onchange="toggleTimeDiv()" id="evnDefTime"/>
+											    Define Time 
+                                            </label>
+										</div>
+                                    </div>
+                                    </legend>
+									<div class="row" id="evnTime">
+										<div class="col-md-1">
+										</div>
+										<div class="col-md-3">
+											<label for="">
+												Hour
+												<select id="evnHour"  class="form-control">
+                                                    
+                                                </select>
+											</label>
+										</div>
+										<div class=" col-md-3">
+											<label for="">
+												minutes
+												<select id="evnMin" class="form-control">
+                                                    
+                                                </select>
+											</label>
+										</div>
+                                        		<div class=" col-md-3">
+											<label for="">
+												AM/PM
+												<select id="evn-Am-Pm" class="form-control">
+                                                    <option value="0">AM</option>
+                                                    <option value="1">PM</option>
+                                                </select>
+											</label>
+										</div>
+									</div>
+                                    
+                                    <div class="row">
+										<div class="col-md-1">
+										</div>
+										<div class="col-md-10">
+											<label for="" style="width: 100%;">
+												Event Description
+												<textarea class="form-control" rows="7" style="width: 100%;" id="evnDesc"></textarea>
+											</label>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-1">
+										</div>
+										<div class="col-md-4">
+											<input type="submit"  value="submit" class="btn btn-primary">
+										</div>
+									</div>
+							</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+            <div class="row search-div">
+                <div class="col-md-8 col-xs-12">  
+                    <input class="form-control" type="text" placeholder="Search for events.." id="searchInput" onkeyup="searchEvents()">
+                 </div> 
+                <div class="serch-result col-md-4 col-xs-12">
+                <label>Search By 
+                        <select id="searchBy" onchange="ChangeTextElemToDate();" class="form-control">
+                                <option value="0">Serial number</option>
+                                <option value="1" selected="selected">Event name</option>
+                                <option value="2">Event description</option>
+                                <option value="3">Event date</option>
+                        </select>
+                    </label>
+                 </div>
+            </div>
+			<div class="row">
+                
+				<div class="table-responsive">
+                    
+                
+					<table class="table table-inverse"  >
+							<thead>
+								<tr>
+									<th>
+										Sno
+									</th>
+									<th>
+										Name of Event Organizer
+									</th>
+									<th>
+										Event Description
+									</th>
+									<th>
+										Event Date
+									</th>
+									<th>
+										Created At
+									</th>
+                                    <th>
+										Action
+									</th>
+								</tr>
+							</thead>
+							<tbody id="table-eventDetail">
+								
+							</tbody>
+					  </table>
+				</div>
+			</div>
+            
+		</div>
+        <div id="js-heightControl" style="height: 0;">&nbsp;</div>
+        <script>
+            $(function(){
+                $('#js-heightControl').css('height', $(window).height() - $('html').height() +'px');
+            });
+        </script>
+        <footer>
+                <p>Designed By Abdul Rehman</p>
+            </footer>
+        <input type="hidden" id="pagedetector" value="home"/>
+		
+		<script src="js/plugins/jquery-ui-calender.js"></script>
+		<script src="js/Popper.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+		<script src="js/app.js"></script>
+		<script>
+			
+  $( function() {
+    $( "#e-datepicker" ).datepicker();
+  } );
+function toggleTimeDiv(){
+   if(document.getElementById("evnDefTime").checked==true)
+   {
+        document.getElementById("evnTime").style.display="";
+   }
+   else{
+     document.getElementById("evnTime").style.display="none";
+   }
+} 
+function modalboxShow(status){
+        
+            
+            var modal = document.getElementById('myModal'); // Get the modal
+            var span = document.getElementsByClassName("close")[1]; // Get the <span> element that closes the modal
+          
+            modal.style.display = "block";
+            if(document.getElementById("evnDefTime").checked==true)
+            {
+                document.getElementById("evnTime").style.display="";
+                for(var i=1;i<=12;i++)
+                {
+                    var opt=document.createElement("option");
+                    opt.appendChild(document.createTextNode(i));
+                    opt.setAttribute("value",i);
+                    document.getElementById('evnHour').appendChild(opt);
+                }
+                
+                for(var i=0;i<=59;i++)
+                {
+                    var opt=document.createElement("option");
+                    var mm=i<10? "0"+i :i; 
+                    opt.appendChild(document.createTextNode(mm));
+                    opt.setAttribute("value",i);
+                    document.getElementById('evnMin').appendChild(opt);
+                }  
+            }
+            else{
+                document.getElementById("evnTime").style.display="none";
+            }
+            
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                resetValues();
+                modal.style.display = "none";
+            }
+            
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    resetValues();
+                    modal.style.display = "none";
+                }
+            }
+ }
+        document.getElementById("user-pannel").innerHTML="Signedin as <span style='color:#68D218;'>"+JSON.parse(sessionStorage.getItem('Eventp_userInfo')).displayName+"</span>";
+        function DisplayIP(response) {
+        //document.getElementById("ipaddress").innerHTML = "Your IP Address is " + response.ip;
+        fnUserCounter(response.ip);
+    }
+		</script>
+	</body>
+</html>

@@ -1,0 +1,138 @@
+body{
+    background-color: #F8F8F8;
+}
+/*=============================Login/Signup page====================*/
+.login-div{
+    margin: auto;
+    margin-top: 86px;
+}
+.sgnup-div{
+    margin: auto;
+    margin-top: 40px;
+    }
+label.label {
+    width: 152px;
+}
+label.label + input {
+    width: 255px;
+}
+/*=============================End Login/Signup page====================*/
+/*=============================Home page====================*/
+.row.title-page {
+    background-color: black;
+    color: white;
+    padding: 80px 20px;
+}
+.title-page h1 {
+    text-align: center;
+    color: #68D218;
+    font-size: 40px;
+    font-weight: bold;
+}
+p.info-para {
+    text-align: center;
+    font-size: 17px;
+    color: #D0D0D0;
+}
+.btn-head {
+    text-align: center;
+}
+.row.search-div {
+    background: darkgrey;
+    padding: 20px;
+}
+#searchBy{
+    display:inline;
+}
+.search-div input {
+    margin-top: 20px;
+}
+thead {
+    background-color: #68D218;
+    color: white;
+}
+i.fa.fa-pencil {
+    margin-right: 7px;
+}
+#table-eventDetail tr:nth-child(even) {background: #CCC}
+#table-eventDetail tr:nth-child(odd) { background: #928F8F;}
+footer{
+    background: black;
+    padding: 10px 0px 1px 0px;
+    color: #ADADAD;
+    text-align: center;
+}
+
+/*=============================End Home page====================*/
+/*=============================All Events page====================*/
+.row.event-disp {
+    background: #F8F8F8;
+    padding: 20px 0px;
+}
+.e-content {
+    width: 80%;
+    margin: 0 auto;
+}
+.card {
+    border: 1px solid #68D218;
+    padding: 20px;
+    background: #F3F3F3;
+    margin-bottom: 10px;
+}
+.navbar-default {
+    background-color: #68D218;
+    border-color: #E2D7DF;
+}
+nav.navbar.navbar-default a {
+    color: #0A4207;
+}
+nav.navbar.navbar-default a:hover {
+    color: #D4D4D4;
+}
+/*=============================End All Events page====================*/
+/*=============================My Events page====================*/
+
+
+/*=============================End My Events page====================*/
+
+/*model box*/
+.modal-alert {
+    background-color: #1C7705;
+    padding: 12px;
+    position: fixed;
+    width: 244px;
+    left: 1%;
+    top: 32%;
+    color: #DED5D5;
+    font-weight: bold;
+    border: 2px solid #191818;
+    border-radius: 5px;
+    transition: left 0.5s ease;
+    z-index: 10;
+}
+.modal-temp{
+    position:fixed; 
+    left:-999px ;
+    top: 32%;
+    transition: left 0.5s ease;
+}
+div#message {
+    margin-top: 8px;
+}
+/* The Close Button */
+.close-btn {
+    color: #000;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: right;
+    top: -12px;
+    right: -4px;
+    position: relative;
+}
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
